@@ -10,10 +10,17 @@ Like Hero To Zero ist eine Webanwendung, die entwickelt wurde, um Transparenz ü
 
 ## Technologie-Stack
 
-- **Frontend**: JSF (JavaServer Faces), PrimeFaces
-- **Backend**: JPA (Java Persistence API), EJB (Enterprise JavaBeans)
-- **Datenbank**: Apache Derby
-- **Server**: Apache TomEE Plume
+- **Jakarta EE 8**: Als das Rückgrat unserer Anwendung, verwenden wir Jakarta EE 8 API für die Unterstützung von Webanwendungen in einem Enterprise-Umfeld.
+
+- **PrimeFaces 12.0.0**: Für das Frontend nutzen wir PrimeFaces, ein leistungsfähiges UI-Framework, das auf JSF aufbaut und reichhaltige Komponenten für eine interaktive Benutzererfahrung bietet.
+
+- **Apache Derby 10.14.2.0**: Als unsere Datenbanklösung setzen wir Apache Derby ein, eine leichtgewichtige, eingebettete Datenbank, die eine einfache Integration und Wartung ermöglicht.
+
+- **EclipseLink 3.0.4**: Für die Objekt-Relationale Abbildung (ORM) und die Verwaltung der Datenbankinteraktionen verwenden wir EclipseLink, den Referenz-Implementierer der JPA-Spezifikation.
+
+- **Apache Commons CSV 1.10.0**: Zur Verarbeitung von CSV-Dateien und dem Import von Emissionsdaten setzen wir auf Apache Commons CSV, das eine einfache und flexible API für CSV-Operationen bietet.
+
+- **Log4j 2.22.1**: Für umfassendes Logging und Fehlerüberwachung innerhalb unserer Anwendung integrieren wir Log4j, ein zuverlässiges und anpassbares Logging-Framework.
 
 ## Schnellstart
 
