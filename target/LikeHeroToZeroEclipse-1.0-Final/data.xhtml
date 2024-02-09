@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="de">
+
+<h:head>
+	<title>Datenvisualisierung - Like Hero to Zero</title>
+	<h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Startseite" outcome="/index.xhtml" icon="pi pi-fw pi-home" />
+        <p:menuitem value="Emissionsdaten anzeigen" outcome="/data.xhtml" icon="pi pi-fw pi-chart-line" />
+        <p:menuitem value="Anmelden" outcome="/login.xhtml" icon="pi pi-fw pi-user" />
+        <p:menuitem value="Registrierung" outcome="/scientistRegistration.xhtml" icon="pi pi-fw pi-user-plus" />
+    </p:menubar>
+    
+	<div class="container mt-4">
+		<h1 class="mb-3">Globale CO<sub>2</sub>-Emissionsdaten</h1>
+		<h2 class="mb-3">Hier finden Sie interaktive Diagramme und Tabellen
+			für die Länder Ihrer Wahl</h2>
+
+		<!-- Formular zum Laden von CSV-Daten und Anzeigen von Diagrammen -->
+		<h:form id="dataForm" class="mb-4">
+			<!-- Dropdown zur Länderauswahl -->
+			<div class="mb-3">
+				<label for="countryDropdown" class="form-label">Land auswählen:</label>
+				<p:selectOneMenu id="countryDropdown"
+					value="#{emissionDataBean.selectedCountry}"
+					styleClass="form-select">
+					<f:selectItem itemLabel="Land auswählen" itemValue=""
+						noSelectionOption="true" />
+					<f:selectItems value="#{emissionDataBean.countries}" var="country"
+						itemValue="#{country}" itemLabel="#{country}" />
+					<p:ajax event="change"
+						listener="#{emissionDataBean.onCountryChange}"
+						update="chart dataTable statsPanel" />
+				</p:selectOneMenu>
+			</div>
+
+			<!-- Liniendiagramm für Emissionen -->
+			<div class="mb-4">
+				<p:chart type="line" model="#{emissionDataBean.emissionsChartModel}"
+					id="chart" style="height:400px;" />
+			</div>
+
+			<hr />
+
+			<h:panelGroup id="statsPanel">
+			    <h3><b>CO<sub>2</sub>-Emissionsstatistiken für "#{emissionDataBean.selectedCountry}"</b></h3>
+			    <p>
+			        Veränderung von 1990 bis 2020: <b><h:outputText value="#{emissionDataBean.changePercent1990To2020}">
+			            <f:convertNumber pattern="#0.##" locale="de" /></h:outputText>%</b>
+			    </p>
+			    <p>
+			        Minimale Emission: <b><h:outputText value="#{emissionDataBean.minEmissionData.co2Emissions}">
+			            <f:convertNumber pattern="#,##0.00" locale="de" /> Tonnen im Jahr #{emissionDataBean.minEmissionData.year}</h:outputText></b>
+			    </p>
+			    <p>
+			        Maximale Emission: <b><h:outputText value="#{emissionDataBean.maxEmissionData.co2Emissions}">
+			            <f:convertNumber pattern="#,##0.00" locale="de" /> Tonnen im Jahr #{emissionDataBean.maxEmissionData.year}</h:outputText></b>
+			    </p>
+			    <p>
+			        Prozentuale Veränderung in den letzten 5 Jahren: <b><h:outputText value="#{emissionDataBean.changePercentLast5Years}">
+			            <f:convertNumber pattern="#0.##" locale="de" /></h:outputText>%</b>
+			    </p>
+			</h:panelGroup>
+
+			<hr />
+
+			<!-- Tabelle mit Daten anzeigen -->
+			<p:dataTable id="dataTable" var="data"
+				value="#{emissionDataBean.filteredEmissionData}"
+				styleClass="table table-striped" stickyHeader="true"
+				stickyTopAt=".layout-topbar">
+				<!-- Die Spalte "Land" wurde wie gewünscht entfernt -->
+				<p:column headerText="Jahr" sortBy="#{data.year}">
+					<h:outputText value="#{data.year}" />
+				</p:column>
+
+				<p:column headerText="Emissionen in Tonnen"
+					sortBy="#{data.co2Emissions}">
+					<h:outputText value="#{data.co2Emissions}">
+						<f:convertNumber pattern="#,##0.00" locale="de" />
+					</h:outputText>
+				</p:column>
+			</p:dataTable>
+
+		</h:form>
+		<hr />
+
+		<p:button outcome="/index.xhtml" value="Zurück zur Startseite"
+			styleClass="ui-button-raised ui-button-secondary" />
+
+	</div>
+</h:body>
+</html>

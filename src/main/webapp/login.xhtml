@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui" lang="de">
+
+<h:head>
+	<title>Login - Like Hero to Zero</title>
+	<h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+    <p:menubar>
+        <p:menuitem value="Startseite" outcome="/index.xhtml" icon="pi pi-fw pi-home" />
+        <p:menuitem value="Emissionsdaten anzeigen" outcome="/data.xhtml" icon="pi pi-fw pi-chart-line" />
+        <p:menuitem value="Anmelden" outcome="/login.xhtml" icon="pi pi-fw pi-user" />
+        <p:menuitem value="Registrierung" outcome="/scientistRegistration.xhtml" icon="pi pi-fw pi-user-plus" />
+    </p:menubar>
+    
+	<div class="container mt-4">
+		<h1>Login - Dashboard</h1>
+		<p><b>Bitte melden Sie sich an, um auf das Dashboard zuzugreifen, wo Sie CO<sub>2</sub>-Emissionsdaten verwalten können.</b></p>
+
+		<h:form>
+			<p:panel header="Anmeldung">
+				<h:panelGrid columns="2">
+					<h:outputLabel for="username" value="Benutzername:" />
+					<p:inputText id="username" value="#{loginBean.username}"
+						required="true" requiredMessage="Benutzername ist erforderlich" />
+
+					<h:outputLabel for="password" value="Passwort:" />
+					<p:password id="password" value="#{loginBean.password}"
+						required="true" requiredMessage="Passwort ist erforderlich" />
+				</h:panelGrid>
+
+				<p:commandButton value="Anmelden" action="#{loginBean.login}" />
+			</p:panel>
+		</h:form>
+		
+		<hr />
+
+		<p:button outcome="/index.xhtml" value="Zurück zur Startseite"
+			styleClass="ui-button-raised ui-button-secondary" />
+	</div>
+</h:body>
+</html>

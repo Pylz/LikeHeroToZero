@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tomee>
+	<Resource id="likeHeroToZeroDS" type="DataSource">
+		JdbcDriver org.apache.derby.jdbc.EmbeddedDriver
+		JdbcUrl jdbc:derby:C:\\Users\\pille\\MyDB;create=true
+		UserName pylz
+		Password derbytest
+		JtaManaged true
+	</Resource>
+</tomee>

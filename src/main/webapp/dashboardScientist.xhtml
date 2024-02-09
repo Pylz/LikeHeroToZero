@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="de">
+<h:head>
+	<title>Wissenschaftler-Dashboard - Like Hero to Zero</title>
+	<h:outputStylesheet name="css/styles.css" />
+</h:head>
+
+<h:body>
+	<p:menubar>
+		<p:menuitem value="Startseite" outcome="/index.xhtml"
+			icon="pi pi-fw pi-home" />
+		<p:menuitem value="Emissionsdaten anzeigen" outcome="/data.xhtml"
+			icon="pi pi-fw pi-chart-line" />
+		<p:menuitem value="Anmelden" outcome="/login.xhtml"
+			icon="pi pi-fw pi-user" />
+		<p:menuitem value="Registrierung"
+			outcome="/scientistRegistration.xhtml" icon="pi pi-fw pi-user-plus" />
+	</p:menubar>
+
+	<div class="container mt-4">
+		<h1>Wissenschaftler-Dashboard</h1>
+		<p>
+			Willkommen im Dashboard für Wissenschaftler! Hier können Sie CO<sub>2</sub>-Daten
+			verwalten.
+		</p>
+		<hr />
+		<h2 style="color: #FF0000; font-size: 1.25rem;">Die Daten müssen in einer
+			".csv"-Datei vorliegen, und die Spaltennamen MÜSSEN "country_name,"
+			"date" und "amount_value" enthalten, damit die Daten korrekt
+			eingelesen werden.</h2>
+		<!-- Abschnitt zur Verwaltung von Emissionsdaten -->
+		<h:form enctype="multipart/form-data" class="my-4">
+			<p:fileUpload value="#{dashboardBean.file}" mode="simple"
+				skinSimple="true" label="Datei auswählen" />
+
+			<br />
+			<br />
+
+			<p:commandButton value="Daten hochladen"
+				action="#{dashboardBean.upload}" styleClass="btn btn-primary my-2">
+				<f:setPropertyActionListener target="#{dashboardBean.redirectPage}"
+					value="dashboardScientist" />
+			</p:commandButton>
+
+			<hr />
+
+			<p:commandButton value="Alle Emissionsdaten löschen"
+				action="#{dashboardBean.deleteAllEmissions}"
+				styleClass="ui-button-raised ui-button-danger delete-button">
+				<f:setPropertyActionListener target="#{dashboardBean.redirectPage}"
+					value="dashboardScientist" />
+			</p:commandButton>
+		</h:form>
+		<hr />
+		<p:button outcome="/index.xhtml" value="Zurück zur Startseite"
+			styleClass="ui-button-raised ui-button-secondary" />
+	</div>
+</h:body>
+</html>

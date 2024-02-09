@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui" lang="de">
+<h:head>
+	<title>Wissenschaftler-Registrierung</title>
+	<h:outputStylesheet name="css/styles.css" />
+</h:head>
+<h:body>
+	<p:menubar>
+		<p:menuitem value="Startseite" outcome="/index.xhtml"
+			icon="pi pi-fw pi-home" />
+		<p:menuitem value="Emissionsdaten anzeigen" outcome="/data.xhtml"
+			icon="pi pi-fw pi-chart-line" />
+		<p:menuitem value="Anmelden" outcome="/login.xhtml"
+			icon="pi pi-fw pi-user" />
+		<p:menuitem value="Registrierung"
+			outcome="/scientistRegistration.xhtml" icon="pi pi-fw pi-user-plus" />
+	</p:menubar>
+
+	<div class="container mt-4">
+		<h1>Wissenschaftler-Registrierung</h1>
+		<p>Bitte füllen Sie das Formular aus, um sich als Wissenschaftler zu registrieren.</p>
+
+		<h:form id="registrationForm">
+			<p:panelGrid columns="2" styleClass="form-layout"
+				columnClasses="form-column,form-column">
+				<p:outputLabel for="username" value="Benutzername:" />
+				<p:inputText id="username" value="#{userBean.user.username}"
+					required="true" />
+
+				<p:outputLabel for="password" value="Passwort:" />
+				<p:password id="password" value="#{userBean.user.password}"
+					required="true" feedback="true" />
+
+				<p:outputLabel value="Ich bin ein Wissenschaftler:" />
+				<p:selectBooleanCheckbox id="scientistCheckbox"
+					widgetVar="scientistCheckboxVar" required="true" />
+			</p:panelGrid>
+
+			<br />
+
+			<p:commandButton value="Registrieren" action="#{userBean.saveUser}"
+				styleClass="btn btn-primary" style="margin-left: 0;"
+				onclick="return validateScientistCheckbox();" />
+		</h:form>
+
+		<script type="text/javascript">
+			function validateScientistCheckbox() {
+				var scientistCheckbox = PF('scientistCheckboxVar').isChecked();
+				if (scientistCheckbox) {
+					return true; // Checkbox is checked, proceed with registration
+				} else {
+					alert('Sie müssen ein Wissenschaftler sein, um sich zu registrieren.'); // Anzeige einer Fehlermeldung
+					return false; // Formularübermittlung verhindern
+				}
+			}
+		</script>
+
+
+		<hr />
+		<p:button outcome="/index.xhtml" value="Zurück zur Startseite"
+			styleClass="ui-button-raised ui-button-secondary" />
+	</div>
+
+	<!-- Fügen Sie hier ggf. Skripte ein, wenn erforderlich -->
+</h:body>
+</html>

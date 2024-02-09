@@ -1,0 +1,37 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+	version="2.2">
+
+	<!-- Persistence Unit mit JTA-Transaktion -->
+	<persistence-unit name="likeHeroToZeroPU"
+		transaction-type="JTA">
+
+		<!-- JPA-Anbieter -->
+		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+
+		<!-- JTA-Datenquelle -->
+		<jta-data-source>likeHeroToZeroDS</jta-data-source>
+
+		<!-- Non-JTA-Datenquelle -->
+		<non-jta-data-source>likeHeroToZeroDSNonJta</non-jta-data-source>
+
+		<!-- Entitätsklassen -->
+		<class>com.pylz.entities.EmissionData</class>
+		<class>com.pylz.entities.User</class>
+
+		<!-- EclipseLink-Einstellungen -->
+		<properties>
+			<!-- Logging-Level -->
+			<property name="eclipselink.logging.level" value="FINE" />
+
+			<!-- SQL-Logging-Level -->
+			<property name="eclipselink.logging.level.sql" value="FINE" />
+
+			<!-- DDL-Generierung -->
+			<property name="eclipselink.ddl-generation"
+				value="create-or-extend-tables" />
+
+		</properties>
+	</persistence-unit>
+</persistence>

@@ -1,0 +1,165 @@
+body {
+	font-family: 'Arial', sans-serif;
+	background-color: #006a35;
+}
+
+.container {
+	background-color: #ffffff;
+	border-radius: 0.5rem;
+	padding: 3rem;
+	margin: 3rem auto;
+	box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.05);
+	max-width: 1300px;
+	/* Maximal Breite für große Bildschirme */
+}
+
+h1,
+h2,
+h4,
+h5,
+h6 {
+	color: #006a35;
+	text-align: center;
+	margin-bottom: 1rem;
+}
+
+h3 {
+	color: #006a35;
+	text-align: left;
+	margin-bottom: -2px;
+}
+
+p {
+	line-height: 1.5;
+	text-align: justify;
+	color: #000000;
+	font-size: 1.1rem;
+}
+
+.ui-icon,
+.ui-menuitem-text {
+	color: #006a35 !important;
+	font-weight: bold !important;
+	font-size: 1.25rem !important;
+}
+
+p.lead {
+	font-size: 1.25rem;
+	color: #006a35;
+	text-align: center;
+}
+
+.ui-sortable-column {
+	background-color: #006a35 !important;
+}
+
+.ui-column-title {
+	color: #ffffff !important;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.ui-sortable-column-icon .ui-icon .ui-icon-carat-2-n-s {
+	color: #ffffff !important;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.ui-datatable-even {
+	background-color: #ffffff !important;
+	color: #006a35 !important;
+}
+
+.ui-datatable-odd {
+	background-color: #006a35 !important;
+	color: #ffffff !important;
+}
+
+.ui-datatable thead th .ui-sortable-column-icon.ui-icon-carat-2-n-s {
+	color: #ffffff !important;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.form-label {
+	font-weight: bold;
+	color: #006a35;
+	text-align: left;
+	display: block;
+	margin-top: 2rem;
+	font-size: 1.25rem;
+	margin-bottom: 0.75rem;
+}
+
+.jqplot-title {
+	color: #006a35;
+	font-weight: bold;
+	margin-bottom: 15px;
+	margin-top: 15px;
+	font-size: 1.7em;
+}
+
+.ui-accordion .ui-accordion-header {
+	background-color: #ffffff;
+	color: #006a35 !important;
+	font-weight: bold;
+	font-size: 1.25rem;
+}
+
+.ui-accordion .ui-accordion-content {
+	color: #000000 !important;
+	background-color: #ffffff !important;
+}
+
+.ui-panel-titlebar,
+.ui-widget-header {
+	background-color: #006a35 !important;
+}
+
+.ui-panel-title {
+	color: #ffffff !important;
+}
+
+.label td {
+	font-weight: bold !important;
+}
+
+.ui-panel .ui-panel-content {
+	font-weight: bold !important;
+	color: #000000 !important;
+}
+
+.ui-button {
+	margin-top: 1rem !important;
+	margin-bottom: 0.75rem !important;
+}
+
+.ui-button-danger {
+	font-weight: bold !important;
+	font-size: 1.25rem !important;
+	margin-top: 1.5rem !important;
+	margin-bottom: 1.5rem !important;
+}
+
+.ui-selectonemenu-label,
+.ui-inputfield {
+	color: #000000 !important;
+	font-size: 1.2rem !important;
+}
+
+.ui-outputlabel {
+	color: #ffffff !important;
+	font-weight: bold !important;
+	font-size: 1.25rem !important;
+}
+
+.ui-panelgrid-cell {
+	background-color: #006a35 !important;
+}
+
+.ui-paginator-first,
+.ui-paginator-prev,
+.ui-paginator-next,
+.ui-paginator-last {
+	color: #ffffff !important;
+}
